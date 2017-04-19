@@ -1,36 +1,39 @@
-var ngApp = angular.module('angularDemo', [])
-    .controller("AppCtrl", function ($scope) {
+var ngApp = angular.module('angularDemo', ["ngAnimate"])
+    .controller("AppCtrl", function ($scope, $log) {
 
-        $scope.selectedUser = null;
-        $scope.userCopy = null;
+        $scope.isHidden = false;
 
-       $scope.users = [
-           {firstName: 'Mark', lastName: 'Otto', username: '@mdo'},
-           {firstName: 'Jacob', lastName: 'Thornton', username: '@fat'},
-           {firstName: 'Larry', lastName: 'the Bird', username: '@twitter'}
-       ];
+        $scope.fadeOut = function () {
 
-       $scope.selectUser = function (user) {
-           $scope.selectedUser = user;
+            $scope.isHidden = !$scope.isHidden;
 
-           $scope.userCopy = angular.copy(user);
-       };
+            $log.info($scope.isHidden);
 
-       $scope.saveUser = function (user) {
-           $scope.selectedUser.firstName = user.firstName;
-           $scope.userCopy = null;
-       }
-
-    });
-
-
-//test directive
-ngApp.directive("whoyouare", function () {
-    return {
-        restrict: "M",
-        link: function () {
-            alert("Works");
         }
-    }
-});
+
+    })
+    .directive("hideMe", function ($animate) {
+        return function (scope, element, attrs) {
+            scope.$watch(attrs.hideMe, function (value) {
+                if(value)
+                    $animate.addClass(element, "fade123");
+                    // $(element).fadeOut();
+                else
+                    $animate.removeClass(element, "fade123");
+
+                // $(element).fadeIn();
+
+            })
+        }
+    })
+    .animation(".fade123", function () {
+        return {
+            addClass: function (element, className) {
+                $(element).fadeOut();
+            },
+            removeClass: function (element, className) {
+                $(element).fadeIn();
+            }
+        }
+    });
 
