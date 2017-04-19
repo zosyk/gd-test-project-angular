@@ -1,0 +1,12 @@
+.animate-box {
+    opacity: 1;
+}
+
+
+.animate-box.ng-hide {
+    opacity: 0;
+}
+
+.animate-box.ng-hide-add, .animate-box.ng-hide-remove {
+    transition: 0.3s;
+}

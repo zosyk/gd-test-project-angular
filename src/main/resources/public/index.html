@@ -8,55 +8,18 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>-->
-
+    <link rel="stylesheet" href="css/angular-demo.css">
 </head>
 <body ng-app="angularDemo" ng-controller="AppCtrl">
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        <form>
-            <div class="form-group">
-                <label>First name</label>
-                <input type="text" class="form-control" ng-model="userCopy.firstName">
-            </div>
-            <button type="button" class="btn btn-default" ng-click="saveUser(userCopy)">Save</button>
-        </form>
-    </div>
-</div>
 
+    <h1 ng-repeat-start="item in [1,2,3,4,5,6]"></h1>
+    <div>hi item {{item}}</div>
+    <h1 ng-repeat-end></h1>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Username</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr ng-repeat="user in users">
-        <th scope="row">{{$index + 1}}</th>
-        <td ng-click="selectUser(user)">{{user.firstName}}</td>
-        <td>{{user.lastName}}</td>
-        <td>{{user.username}}</td>
-
-    </tr>
-    </tbody>
-</table>
-
-<div>
-
-</div>
-
-
-
-
-
+<script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/angular.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-cookies.js"></script>
-<script src="js/angular-sanitize.js"></script>
 <script src="js/main.js"></script>
+<script src="js/angular-animate.js"></script>
 </body>
 </html>
