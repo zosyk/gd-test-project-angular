@@ -14,7 +14,7 @@ var ngApp = angular.module('angularDemo', [])
            $scope.selectedUser = user;
 
            $scope.userCopy = angular.copy(user);
-       }
+       };
 
        $scope.saveUser = function (user) {
            $scope.selectedUser.firstName = user.firstName;
@@ -22,4 +22,15 @@ var ngApp = angular.module('angularDemo', [])
        }
 
     });
+
+
+//test directive
+ngApp.directive("whoyouare", function () {
+    return {
+        restrict: "M",
+        link: function () {
+            alert("Works");
+        }
+    }
+});
 
